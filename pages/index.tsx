@@ -19,9 +19,8 @@ type Launch = {
   mission_name: string
 }
 
-const Home: NextPage = () => {
+const Launches = () => {
   const [launches, setLaunches] = useState<Launch[]>()
-
   useEffect(() => {
     async function fetchLaunches() {
       const response = await request(GRAPHQL_ENDPOINT, LAUNCHES_QUERY)
@@ -33,11 +32,19 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-    <Box maxW="container.md" mx="auto" mt="8">
-      <Heading>Hello, GraphQL!</Heading>
+    <Box mt="2">
       {launches?.map((launch) => (
         <Text key={launch.id}>{launch.mission_name}</Text>
       ))}
+    </Box>
+  )
+}
+
+const Home: NextPage = () => {
+  return (
+    <Box maxW="container.md" mx="auto" mt="8">
+      <Heading>Hello, GraphQL!</Heading>
+      <Launches />
     </Box>
   )
 }
