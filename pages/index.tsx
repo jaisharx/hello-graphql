@@ -1,7 +1,9 @@
-import { ReactNode, useEffect, useState } from 'react'
 import { Box, Button, Heading, HStack, Spacer, Text } from '@chakra-ui/react'
 import { request, gql } from 'graphql-request'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+
+import type { Dispatch, SetStateAction } from 'react'
 import type { NextPage } from 'next'
 
 const LAUNCHES_QUERY = gql`
