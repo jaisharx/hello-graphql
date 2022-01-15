@@ -1,4 +1,13 @@
-import { Box, Button, Heading, HStack, Spacer, Text } from '@chakra-ui/react'
+import {
+  Box,
+  BoxProps,
+  Button,
+  Heading,
+  HStack,
+  Spacer,
+  Text,
+  chakra,
+} from '@chakra-ui/react'
 import { request, gql } from 'graphql-request'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
@@ -14,6 +23,9 @@ const LAUNCHES_QUERY = gql`
     }
   }
 `
+
+const MotionBox = motion<BoxProps>(Box)
+const ChakraBox = chakra(motion.div)
 
 const GRAPHQL_ENDPOINT = 'https://api.spacex.land/graphql/'
 
@@ -59,7 +71,7 @@ const ToogleVisibilty = ({ isVisible, setShow }: CompProps) => {
 }
 
 const Home: NextPage = () => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
 
   return (
     <Box maxW="container.md" mx="auto" mt="8">
@@ -68,9 +80,9 @@ const Home: NextPage = () => {
         <Spacer />
         <ToogleVisibilty isVisible={show} setShow={setShow} />
       </HStack>
-      <motion.div animate={{ opacity: show ? 1 : 0 }}>
+      <MotionBox animate={{ opacity: show ? 1 : 0 }} bg="whatsapp.100">
         <Launches />
-      </motion.div>
+      </MotionBox>
     </Box>
   )
 }
