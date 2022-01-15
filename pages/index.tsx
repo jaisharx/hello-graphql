@@ -46,7 +46,7 @@ const ToogleVisibilty = ({ isVisible, isLoading, setShow }: CompProps) => {
         <Spinner />
       ) : (
         <Button onClick={() => setShow((show) => !show)} size="sm">
-          {isVisible ? 'Show' : 'Hide'}
+          {isVisible ? 'Hide' : 'Show'}
         </Button>
       )}
     </HStack>
